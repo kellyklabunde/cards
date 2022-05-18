@@ -1,9 +1,8 @@
 <template>
   <div>
     <h1>Hello Main</h1>
-    <CardBootstrap msg="1" />
     <li v-for="data in this.dummyData" :key="data.id">
-      <h1>{{ data.title }}</h1>
+      <CardBootstrap v-bind:msg="data.title" />
     </li>
   </div>
 </template>

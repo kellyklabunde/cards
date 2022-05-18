@@ -13,6 +13,10 @@ export default {
     name: 'CardBootstrap',
     props: {
         msg: String
-    }
+    },
+      mounted() {
+    console.log("MOUNTED CARD");
+    console.log(this.msg);
+  },
 }
 </script>
