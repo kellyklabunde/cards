@@ -1,9 +1,11 @@
 <template>
     <div>
-        <b-card header="Card Header" header-text-variant="light" header-tag="header" header-bg-variant="info"
-            title="Title" style="max-width: 20rem;">
-            <h1>{{ msg }}</h1>
-            <b-card-text>Header and footers variants.</b-card-text>
+        <b-card :header="cardUsername" header-text-variant="light" header-tag="header" header-bg-variant="info"
+            :footer="cardEmail" footer-tag="footer" footer-bg-variant="info" footer-border-variant="light" footer-text-variant="light"
+            :title="cardTitle" style="max-width: 20rem;">
+            <b-card-text> {{ cardBody }} </b-card-text>
+            <b-card-text> {{ cardName }} </b-card-text>
+
         </b-card>
     </div>
 </template>
@@ -12,11 +14,13 @@
 export default {
     name: 'CardBootstrap',
     props: {
-        msg: String
+        cardTitle: String,
+        cardBody: String,
+        cardUsername: String,
+        cardName: String,
+        cardEmail: String
     },
-      mounted() {
-    // console.log("MOUNTED CARD");
-    // console.log(this.msg);
-  },
+    mounted() {
+    },
 }
 </script>
