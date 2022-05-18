@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Hello Main</h1>
-    <li v-for="data in this.dummyData" :key="data.id">
+    <li v-for="data in this.commentDetails" :key="data.id">
       <CardBootstrap v-bind:msg="data.title" />
     </li>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 import CardBootstrap from '../card/CardBootstrap.vue'
-import { dummyData } from './DummyData.js'
+const axios = require('axios').default;
 
 export default {
   name: 'FirstPage',
@@ -18,12 +18,20 @@ export default {
   },
   data: function () {
     return {
-      dummyData
+      commentDetails: 0,
     };
   },
   mounted() {
     console.log("MOUNTED");
-    console.log(dummyData);
+    this.getData();
+  },
+  methods: {
+    getData() {
+      axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
+        this.commentDetails = response.data;
+        console.log(this.commentDetails);
+      });
+    },
   },
 }
 </script>

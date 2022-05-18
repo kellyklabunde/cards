@@ -15,8 +15,8 @@ export default {
         msg: String
     },
       mounted() {
-    console.log("MOUNTED CARD");
-    console.log(this.msg);
+    // console.log("MOUNTED CARD");
+    // console.log(this.msg);
   },
 }
 </script>
