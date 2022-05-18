@@ -1,8 +1,8 @@
 <template>
     <div>
-        <b-card header="Card Header" header-text-variant="white" header-tag="header" header-bg-variant="dark"
-            footer="Card Footer" footer-tag="footer" footer-bg-variant="success" footer-border-variant="dark"
+        <b-card header="Card Header" header-text-variant="light" header-tag="header" header-bg-variant="info"
             title="Title" style="max-width: 20rem;">
+            <h1>{{ msg }}</h1>
             <b-card-text>Header and footers variants.</b-card-text>
         </b-card>
     </div>
@@ -11,5 +11,8 @@
 <script>
 export default {
     name: 'CardBootstrap',
+    props: {
+        msg: String
+    }
 }
 </script>
