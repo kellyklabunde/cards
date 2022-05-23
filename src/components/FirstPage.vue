@@ -1,7 +1,8 @@
 <template>
   <div class="cardGrid">
     <ul v-for="data in this.dataMerged" :key="data.id">
-      <CardBootstrap :cardTitle="data.title" :cardBody="data.body" :cardUsername="data.username" :cardName="data.name" :cardEmail="data.email" />
+      <CardBootstrap :cardTitle="data.title" :cardBody="data.body" :cardUsername="data.username" :cardName="data.name"
+        :cardEmail="data.email" />
     </ul>
   </div>
 </template>
@@ -45,7 +46,16 @@ export default {
       this.commentDetails.forEach(comment => {
         this.userDetails.forEach(user => {
           if (comment.userId == user.id) {
-            this.dataMerged.push({ "id": comment.id, "title": comment.title, "body": comment.body, "name": user.name, "username": user.username, "email": user.email })
+            this.dataMerged.push(
+              {
+                "id": comment.id,
+                "title": comment.title,
+                "body": comment.body,
+                "name": user.name,
+                "username": user.username,
+                "email": user.email
+              }
+            )
           }
         });
       });

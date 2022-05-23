@@ -1,15 +1,16 @@
 <template>
-  <FirstPage />
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import FirstPage from './components/FirstPage.vue'
-
 export default {
   name: 'App',
-  components: {
-    FirstPage
+  mounted() {
+    console.log("App mounted");
   }
+
 }
 </script>
 
