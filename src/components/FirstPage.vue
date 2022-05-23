@@ -1,8 +1,10 @@
 <template>
   <div class="cardGrid">
-    <ul v-for="data in this.dataMerged" :key="data.id">
-      <CardBootstrap :cardTitle="data.title" :cardBody="data.body" :cardUsername="data.username" :cardName="data.name"
-        :cardEmail="data.email" />
+    <ul v-for="data in this.dataMerged" :key="data.id" @click="handleClick">
+      <router-link :to="{ name: 'SecondPage', params: { id: data.id } }">
+        <CardBootstrap :cardTitle="data.title" :cardBody="data.body" :cardUsername="data.username" :cardName="data.name"
+          :cardEmail="data.email" />
+      </router-link>
     </ul>
   </div>
 </template>
@@ -41,6 +43,10 @@ export default {
       const response = await axios.get('https://jsonplaceholder.typicode.com/users');
       return response.data;
     },
+    handleClick() {
+
+      console.log("clicked")
+    },
     mergeData() {
       console.log(this.commentDetails);
       this.commentDetails.forEach(comment => {
@@ -72,5 +78,11 @@ export default {
   gap: 15px;
   justify-content: center;
   align-items: center;
+}
+
+.cardGrid a {
+  text-decoration: none;
+  color: black;
+
 }
 </style>

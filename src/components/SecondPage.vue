@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <CardBootstrap v-if="this.ready" :cardTitle="this.dataMerged[0].title" :cardBody="this.dataMerged[0].body"
-            :cardUsername="this.dataMerged[0].username" :cardName="this.dataMerged[0].name"
-            :cardEmail="this.dataMerged[0].email" />
+    <div class="showCard">
+        <div>
+            <CardBootstrap v-if="this.isModalVisible" :cardTitle="this.dataMerged[0].title"
+                :cardBody="this.dataMerged[0].body" :cardUsername="this.dataMerged[0].username"
+                :cardName="this.dataMerged[0].name" :cardEmail="this.dataMerged[0].email" />
+        </div>
     </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
             commentDetails: 0,
             userDetails: 0,
             dataMerged: [],
-            ready: false
+            isModalVisible: false,
         };
     },
     mounted() {
@@ -34,7 +36,9 @@ export default {
     },
     methods: {
         async getCommentDetails() {
+            console.log('https://jsonplaceholder.typicode.com/posts/' + this.id)
             const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + this.id);
+            console.log(response.data)
             return response.data;
         },
         async getUserDetails() {
@@ -43,7 +47,7 @@ export default {
         },
         mergeData() {
             this.userDetails.forEach(user => {
-                if (this.commentDetails.id == user.id) {
+                if (this.commentDetails.userId == user.id) {
                     this.dataMerged.push(
                         {
                             "id": this.commentDetails.id,
@@ -56,8 +60,24 @@ export default {
                     )
                 }
             });
-            this.ready = true
-        }
+            this.isModalVisible = true
+        },
     }
 }
 </script>
+
+<style>
+.showCard {
+    background-color: rgba(199, 199, 199, 0.336);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.showCard button {
+    cursor: pointer;
+
+}
+</style>
